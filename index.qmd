@@ -151,8 +151,8 @@ As there are `{python} f"{obs:,}"` observations and `{python} cols` columns, we 
 #| tbl-summary: "Random sample of 3 observations from the Seattle pets dataset."
 
 # Review a sample of the data
-display(Markdown(df[['license_issue_date','species']]
-    .sample(3).to_markdown(index=False)))
+df[['license_issue_date','species']]
+    .sample(3)
 ```
 
 The first column, `{python} df.columns[0]`, describes the date the pet was adopted. The second column, `{python} df.columns[1]`, contains the species of the pet, which is either "Cat" or "Dog". @tbl-sample-data-b shows a random sample of the data while overall the earliest date in this column is `{python} pd.to_datetime(df['license_issue_date']).min().strftime('%B %d, %Y')` and the latest date is `{python} pd.to_datetime(df['license_issue_date']).max().strftime('%B %d, %Y')`. There are `{python} f"{df['species'].value_counts()['Cat']:,}"` cats and `{python} f"{df['species'].value_counts()['Dog']:,}"` dogs in the dataset.
