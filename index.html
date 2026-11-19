@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.39">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Data Science + Human Behavior Program">
+<meta name="dcterms.date" content="2026-11-19">
+
+<title>A Paper About Cat + Dog Adoptions In Seattle – A Paper About Cat And Dog</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+  margin-bottom: 0em;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js" integrity="sha512-bLT0Qm9VnAYZDflyKcBaQ2gg0hSYNQrJ8RilYldYQ1FxQYoCLtUjuuRuZo+fjqhx/qtq/1itJ0C2ejDxltZVFg==" crossorigin="anonymous"></script><script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-e26003cea8cd680ca0c55a263523d882.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-6bd9cfa162949bde0a231f530c97869d.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/require.js/2.3.6/require.min.js" integrity="sha512-c3Nl8+7g4LMSTdrm621y7kf9v3SDPnhxLNhcjFJbKECVnmZHTdo+IRO05sNLTH/D3vA6u1X32ehoLC7WFVdheg==" crossorigin="anonymous"></script>
+
+<script type="application/javascript">define('jquery', [],function() {return window.jQuery;})</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="./index.html">
+    <span class="navbar-title">A Paper About Cat And Dog</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link active" href="./index.html" aria-current="page"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="./about.html"> 
+<span class="menu-text">About</span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul>
+  <li><a href="#setup-data-exploration-data-preparation" id="toc-setup-data-exploration-data-preparation" class="nav-link active" data-scroll-target="#setup-data-exploration-data-preparation">Setup, Data Exploration, Data Preparation</a></li>
+  <li><a href="#introduction" id="toc-introduction" class="nav-link" data-scroll-target="#introduction">Introduction</a></li>
+  <li><a href="#data-methods" id="toc-data-methods" class="nav-link" data-scroll-target="#data-methods">Data + Methods</a>
+  <ul class="collapse">
+  <li><a href="#seattles-open-data-program" id="toc-seattles-open-data-program" class="nav-link" data-scroll-target="#seattles-open-data-program">Seattle’s Open Data Program</a></li>
+  <li><a href="#data-processing" id="toc-data-processing" class="nav-link" data-scroll-target="#data-processing">Data Processing</a></li>
+  <li><a href="#data-exploration" id="toc-data-exploration" class="nav-link" data-scroll-target="#data-exploration">Data Exploration</a></li>
+  <li><a href="#visualization" id="toc-visualization" class="nav-link" data-scroll-target="#visualization">Visualization</a></li>
+  </ul></li>
+  <li><a href="#analysis-results" id="toc-analysis-results" class="nav-link" data-scroll-target="#analysis-results">Analysis + Results</a></li>
+  <li><a href="#discussion" id="toc-discussion" class="nav-link" data-scroll-target="#discussion">Discussion</a></li>
+  <li><a href="#references" id="toc-references" class="nav-link" data-scroll-target="#references">References</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">A Paper About Cat + Dog Adoptions In Seattle</h1>
+</div>
+
+
+<div class="quarto-title-meta-author">
+  <div class="quarto-title-meta-heading">Author</div>
+  <div class="quarto-title-meta-heading">Affiliation</div>
+  
+    <div class="quarto-title-meta-contents">
+    <p class="author">Data Science + Human Behavior Program </p>
+  </div>
+  <div class="quarto-title-meta-contents">
+        <p class="affiliation">
+            University of Wisconsin-Madison
+          </p>
+      </div>
+  </div>
+
+<div class="quarto-title-meta">
+
+      
+    <div>
+    <div class="quarto-title-meta-heading">Published</div>
+    <div class="quarto-title-meta-contents">
+      <p class="date">November 19, 2026</p>
+    </div>
+  </div>
+  
+    
+  </div>
+  
+<div>
+  <div class="abstract">
+    <div class="block-title">Abstract</div>
+    This paper analyzes adoption trends for cats and dogs in Seattle using data from the TidyTuesday project. Our data visualization and tabulation reveal distinct seasonal patterns for each species, with dogs showing stronger summer peaks and much more dramatic late summer or early fall reductions. However a closer look using Chi2 analysis suggests that the difference in seasonal patterns between dogs and cats is not statistically significant.
+  </div>
+</div>
+
+
+</header>
+
+
+<section id="setup-data-exploration-data-preparation" class="level1">
+<h1>Setup, Data Exploration, Data Preparation</h1>
+<p>This paper uses the standard data science Python stack including <code>pandas</code>, <code>numpy</code>, <code>seaborn</code>, and <code>matplotlib</code>. We<a href="#fn1" class="footnote-ref" id="fnref1" role="doc-noteref"><sup>1</sup></a> set Seaborn’s context to “talk” for larger, more presentation-friendly fonts.</p>
+<p>First we <code>import pandas as pd</code> for data manipulation and <code>import numpy as np</code> for numerical operations. We then import <code>seaborn</code> and <code>matplotlib.pyplot</code> for data visualization. After that we also import <code>chi2_contingency</code> from <code>scipy.stats</code> for our statistical analysis. From <code>IPython.display</code> we import <code>display</code> and <code>Markdown</code> for better formatted output. We set a random seed with <code>np.random.seed(42)</code> for reproducibility and set the default seaborn context to “talk” with <code>sns.set_context('talk')</code> for larger, more reader-friendly fonts.</p>
+<div id="5df6602d" class="cell" data-execution_count="1">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard data and numeric imports</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard data visualization imports</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> seaborn <span class="im">as</span> sns</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Import chi2 statistical test library from scipy</span></span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> scipy.stats <span class="im">import</span> chi2_contingency</span>
+<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a><span class="co"># IPython display utilities for better formatted output</span></span>
+<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> IPython.display <span class="im">import</span>  display,Markdown</span>
+<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a random seed for reproducibility</span></span>
+<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a><span class="co"># ~ code ~</span></span>
+<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Set default seaborn context (bigger fonts)</span></span>
+<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="co"># ~ code ~</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Data for this analysis comes from the TidyTuesday project <span class="citation" data-cites="tidytuesday2019seattlepets">(<a href="#ref-tidytuesday2019seattlepets" role="doc-biblioref">R4DS Online Learning Community 2019</a>)</span>. The following code loads the Seattle pets dataset from the tidy tuesday repository using a common pattern that involves saving the web address (component parts) as Python strings. The Python strings then pass into <code>pd.read_csv()</code> with the <code>+</code> operator to concatenate the strings and create the full URL. The <code>pd.read_csv()</code> function downloads and reads the data into a pandas DataFrame.</p>
+<p>Also performed by this code is the removal of pets that are not cats or dogs. Passing the <code>df['species'].isin(['Cat', 'Dog'])</code> filter (within the square bracket index notation) to the DataFrame returns only the rows where the species column contains either ‘Cat’ or ‘Dog’. Passing a filter into the square bracket index notation is another common pattern when “filtering” a Pandas DataFrame. Finally the <code>df = df.dropna()</code> removes any rows where the species column is null.</p>
+<p>After drawing a sample of the data with <code>df.sample(frac=0.1)</code>, we report the number of observations and columns in the dataset from the <code>df.shape</code> attribute.</p>
+<div id="1c8c7413" class="cell" data-execution_count="2">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Establish data location as Python strings</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>web <span class="op">=</span> <span class="st">"https://raw.githubusercontent.com/"</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>path <span class="op">=</span> <span class="st">"/rfordatascience/tidytuesday/main/data/2019/2019-03-26/"</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>fname <span class="op">=</span> <span class="st">"seattle_pets.csv"</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Read data into a pandas DataFrame</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> pd.read_csv(web <span class="op">+</span> path <span class="op">+</span> fname)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep observations where species is Cat or Dog</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df[df[<span class="st">"species"</span>].isin([<span class="st">"Cat"</span>, <span class="st">"Dog"</span>])]</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Keep only the columns of interest ('license_issue_date', 'species')</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.loc[:, [<span class="st">'license_issue_date'</span>, <span class="st">'species'</span>]]</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove rows with missing data</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.dropna()</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Extract 10% of the total data for faster processing</span></span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>df <span class="op">=</span> df.sample(frac<span class="op">=</span><span class="fl">0.1</span>)</span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Report the number of observations and columns.</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>obs, cols <span class="op">=</span> df.shape</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>These data contain 5,248 observations and 2 columns. Using the <code>sample()</code> method, we inspect a random sample of the data to see the structure of the dataset. Viewing a sample of the data can help identify potential issues with the data and provide insight into the data types of each column, the range of values, and other characteristics.</p>
+<div class="cell" data-tbl-summary="Random sample of 3 observations from the Seattle pets dataset." data-execution_count="3">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Review a sample of the data</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>df[[<span class="st">'license_issue_date'</span>,<span class="st">'species'</span>]].sample(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-sample-data" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-summary="Random sample of 3 observations from the Seattle pets dataset." data-execution_count="3">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sample-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;1: Sample of Seattle Pets Dataset
+</figcaption>
+<div aria-describedby="tbl-sample-data-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display" data-execution_count="3">
+<div>
+
+
+<table class="dataframe do-not-create-environment cell caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-border="1">
+<thead>
+<tr class="header">
+<th data-quarto-table-cell-role="th"></th>
+<th data-quarto-table-cell-role="th">license_issue_date</th>
+<th data-quarto-table-cell-role="th">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">18956</td>
+<td>March 03 2017</td>
+<td>Cat</td>
+</tr>
+<tr class="even">
+<td data-quarto-table-cell-role="th">30238</td>
+<td>April 11 2017</td>
+<td>Dog</td>
+</tr>
+<tr class="odd">
+<td data-quarto-table-cell-role="th">16093</td>
+<td>September 11 2017</td>
+<td>Dog</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>A common pattern when working with data in Python, a Quarto document, or a Jupyter notebook is to create a “data dictionary” that describes the variables in the dataset. This dictionary is useful for understanding the data and for documentation purposes. Here the code creates that dictionary and then uses Pandas to render a table that operates as a data dictionary for readers.</p>
+<div class="cell" data-tbl-summary="Variables describing pet licenses in Seattle." data-execution_count="4">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Prepare a data dictionary for the variables in the dataset</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>data_dict <span class="op">=</span> {</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Variable Names'</span>: [<span class="st">'license_issue_date'</span>, <span class="st">'license_number'</span>, </span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">'animals_name'</span>, <span class="st">'species'</span>, <span class="st">'primary_breed'</span>], <span class="st">'Definition'</span>: [<span class="st">'Date the pet was licensed'</span>, </span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>    <span class="st">'Unique license number'</span>, <span class="st">'Name of the pet'</span>, <span class="st">'Species of the pet'</span>, <span class="st">'Primary breed of the pet'</span>]}</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Use display(Markdown()) to render the table in the output</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>display(Markdown(pd.DataFrame(data_dict).to_markdown(index<span class="op">=</span><span class="va">False</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-data-dictionary" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-summary="Variables describing pet licenses in Seattle." data-execution_count="4">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-data-dictionary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;2: Data Dictionary for Seattle Pets Dataset
+</figcaption>
+<div aria-describedby="tbl-data-dictionary-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Variable Names</th>
+<th style="text-align: left;">Definition</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">license_issue_date</td>
+<td style="text-align: left;">Date the pet was licensed</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">license_number</td>
+<td style="text-align: left;">Unique license number</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">animals_name</td>
+<td style="text-align: left;">Name of the pet</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">species</td>
+<td style="text-align: left;">Species of the pet</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">primary_breed</td>
+<td style="text-align: left;">Primary breed of the pet</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>To create <a href="#tbl-data-dictionary" class="quarto-xref">Table&nbsp;2</a>, we use the <code>pd.DataFrame()</code> function to create a DataFrame from the <code>data_dict</code> dictionary. Each key (<code>Variable Names</code> and <code>Definition</code>) becomes a column name, while each value (a list of variables for <code>Variable Names</code> and a list of definitions for <code>Definition</code>) becomes the ‘data’ or ‘information’ in each row for each column.</p>
+</section>
+<section id="introduction" class="level1">
+<h1>Introduction</h1>
+<p>This paper studies whether the choice of pet to adopt, a cat or a dog, may be influenced by the time of year. To conduct this analysis, we apply a chi-square test of independence to pet species (<code>df['species']</code>) and calendar month (a column we will create from the <code>license_issue_date</code> column).</p>
+<p>This is a topic of importance for multiple reasons. If cats and dogs really do have their seasons, city pet registries could then better understand how to staff the licensing counter before the springtime puppy rush instead of after it. Shelters could plan their kennel space, adoption events, and fundraising calendars around the months when one species is in higher demand, and veterinarians could stock up on vaccines and flea treatments, and clear their schedules, just ahead of the busiest stretch of first-year checkups. The same pattern could help pet food retailers, trainers, and groomers decide when to run their promotions, and it might even tell us something about how Seattle’s famously gray winters shape our appetite for a lap warmer versus a walking partner. Of course, we may find that cats and dogs are equally popular all year long, and that would be a useful answer too. A null result would let everyone stop second-guessing the calendar and simply go meet the furry friend who is waiting for them.</p>
+<p>The research question asks whether pet owners show a seasonal preference for cats or dogs when licensing their pets. The null hypothesis is that there is no seasonal preference, meaning that the distribution of pet species should be uniform across all months. The alternate hypothesis is that there is a seasonal preference, meaning that the distribution of pet species should vary across months.</p>
+</section>
+<section id="data-methods" class="level1">
+<h1>Data + Methods</h1>
+<section id="seattles-open-data-program" class="level2">
+<h2 class="anchored" data-anchor-id="seattles-open-data-program">Seattle’s Open Data Program</h2>
+<p>The data come from the City of Seattle’s Open Data Program, which makes city-generated data openly available to the public to increase transparency and accountability, promote economic development and research, and improve internal performance management <span class="citation" data-cites="seattle2026opendata">(<a href="#ref-seattle2026opendata" role="doc-biblioref">Seattle Information Technology 2026</a>)</span>. Within that program, the Seattle Pet Licenses dataset is published on the city’s open data portal by the Department of Finance and Administrative Services under a public domain license. The dataset lists active pet licenses, including each animal’s species, name, breed, and the owner’s ZIP code, and the city refreshes it quarterly <span class="citation" data-cites="seattle2026petlicenses">(<a href="#ref-seattle2026petlicenses" role="doc-biblioref">City of Seattle 2026</a>)</span>. We obtained our copy through the TidyTuesday project <span class="citation" data-cites="tidytuesday2019seattlepets">(<a href="#ref-tidytuesday2019seattlepets" role="doc-biblioref">R4DS Online Learning Community 2019</a>)</span>, so it reflects the portal data as of that 2019 snapshot rather than the current list. Each row is one licensed pet, which means the data capture pets whose owners licensed them with the city, not every pet in Seattle and not every adoption. <a href="#tbl-sample-data" class="quarto-xref">Table&nbsp;1</a> shows a random sample of three observations, and <a href="#tbl-data-dictionary" class="quarto-xref">Table&nbsp;2</a> describes the variables we use. Our analysis relies on two of them: <code>species</code>, which we limit to cats and dogs, and <code>license_issue_date</code>, from which we derive the calendar month.</p>
+</section>
+<section id="data-processing" class="level2">
+<h2 class="anchored" data-anchor-id="data-processing">Data Processing</h2>
+<p>To derive the calendar month, we could use multiple approaches. One of the most common would be an anonymous lambda function within the Pandas <code>apply()</code> method as follows, <code>df['license_issue_date'].apply(lambda x: x.split(' ')[0])</code>. Another approach is to use a list comprehension as follows, <code>[x.split(' ')[0] for x in df['license_issue_date']]</code>. Both approaches extract the month from the <code>license_issue_date</code> column. We then remap the month names to abbreviations with numbers to facilitate sorting and plotting.</p>
+<p>Finally, turning to <code>pd.crosstab()</code> we create a tally of adoptions by month and species in <code>adoption_counts</code> for analysis and visualization, <a href="#fig-adoptions-by-month" class="quarto-xref">Figure&nbsp;1</a>. And for tabulation we create a copy of the tally in <code>adoption_counts_tbl</code> for display which also contains a column showing the monthly total of both cat and dog adoptions, <a href="#tbl-adoptions-by-month" class="quarto-xref">Table&nbsp;3</a>.</p>
+<div class="cell" data-tbl-summary="Adoptions by month and species." data-execution_count="5">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Derive calendar month from license_issue_date (using list comprehension)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'month'</span>] <span class="op">=</span> [x.split(<span class="st">' '</span>)[<span class="dv">0</span>] <span class="cf">for</span> x <span class="kw">in</span> df[<span class="st">'license_issue_date'</span>]]</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Remap month names to abbreviations with number</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>df[<span class="st">'month'</span>] <span class="op">=</span> df[<span class="st">'month'</span>].<span class="bu">map</span>({<span class="st">'January'</span>: <span class="st">'01 Jan'</span>, <span class="st">'February'</span>: <span class="st">'02 Feb'</span>, </span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>    <span class="st">'March'</span>: <span class="st">'03 Mar'</span>, <span class="st">'April'</span>: <span class="st">'04 Apr'</span>, <span class="st">'May'</span>: <span class="st">'05 May'</span>, <span class="st">'June'</span>: <span class="st">'06 Jun'</span>, </span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>    <span class="st">'July'</span>: <span class="st">'07 Jul'</span>, <span class="st">'August'</span>: <span class="st">'08 Aug'</span>, <span class="st">'September'</span>: <span class="st">'09 Sep'</span>, <span class="st">'October'</span>: </span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>    <span class="st">'10 Oct'</span>, <span class="st">'November'</span>: <span class="st">'11 Nov'</span>, <span class="st">'December'</span>: <span class="st">'12 Dec'</span>})</span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Inspect results: Create crosstab of adoptions by month and species</span></span>
+<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a>adoption_counts <span class="op">=</span> pd.crosstab(index<span class="op">=</span>df[<span class="st">'month'</span>], columns<span class="op">=</span>df[<span class="st">'species'</span>])</span>
+<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a copy with the _tbl suffix for display purposes</span></span>
+<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>adoption_counts_tbl <span class="op">=</span> adoption_counts.copy()</span>
+<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a total column for all adoptions to the display (_tbl) table</span></span>
+<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>adoption_counts_tbl[<span class="st">'Total'</span>] <span class="op">=</span> adoption_counts.<span class="bu">sum</span>(axis<span class="op">=</span><span class="dv">0</span>)</span>
+<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Use display(Markdown()) to render the table in the output</span></span>
+<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>display(Markdown(adoption_counts_tbl.to_markdown()))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-adoptions-by-month" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-summary="Adoptions by month and species." data-execution_count="5">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-adoptions-by-month-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;3: A monthly tally of dog and cat adoptions in Seattle.
+</figcaption>
+<div aria-describedby="tbl-adoptions-by-month-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">month</th>
+<th style="text-align: right;">Cat</th>
+<th style="text-align: right;">Dog</th>
+<th style="text-align: right;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">01 Jan</td>
+<td style="text-align: right;">103</td>
+<td style="text-align: right;">240</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">02 Feb</td>
+<td style="text-align: right;">98</td>
+<td style="text-align: right;">243</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">03 Mar</td>
+<td style="text-align: right;">101</td>
+<td style="text-align: right;">242</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">04 Apr</td>
+<td style="text-align: right;">139</td>
+<td style="text-align: right;">327</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">05 May</td>
+<td style="text-align: right;">126</td>
+<td style="text-align: right;">293</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">06 Jun</td>
+<td style="text-align: right;">130</td>
+<td style="text-align: right;">289</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">07 Jul</td>
+<td style="text-align: right;">161</td>
+<td style="text-align: right;">344</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">08 Aug</td>
+<td style="text-align: right;">160</td>
+<td style="text-align: right;">280</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">09 Sep</td>
+<td style="text-align: right;">121</td>
+<td style="text-align: right;">256</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">10 Oct</td>
+<td style="text-align: right;">207</td>
+<td style="text-align: right;">350</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">11 Nov</td>
+<td style="text-align: right;">166</td>
+<td style="text-align: right;">329</td>
+<td style="text-align: right;">nan</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">12 Dec</td>
+<td style="text-align: right;">198</td>
+<td style="text-align: right;">345</td>
+<td style="text-align: right;">nan</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+</section>
+<section id="data-exploration" class="level2">
+<h2 class="anchored" data-anchor-id="data-exploration">Data Exploration</h2>
+<p>As there are 5,248 observations and 2 columns, we take a look at the data to better understand it.</p>
+<div class="cell" data-tbl-summary="Random sample of 3 observations from the Seattle pets dataset." data-execution_count="6">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Review a sample of the data</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>display(Markdown(df[[<span class="st">'license_issue_date'</span>,<span class="st">'species'</span>]]</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>    .sample(<span class="dv">3</span>).to_markdown(index<span class="op">=</span><span class="va">False</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div id="tbl-sample-data-b" class="cell quarto-float quarto-figure quarto-figure-center anchored" data-tbl-summary="Random sample of 3 observations from the Seattle pets dataset." data-execution_count="6">
+<figure class="quarto-float quarto-float-tbl figure">
+<figcaption class="quarto-float-caption-top quarto-float-caption quarto-float-tbl" id="tbl-sample-data-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Table&nbsp;4: Sample of Seattle Pets Dataset
+</figcaption>
+<div aria-describedby="tbl-sample-data-b-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<div class="cell-output cell-output-display cell-output-markdown">
+<table class="do-not-create-environment cell caption-top table table-sm table-striped small">
+<thead>
+<tr class="header">
+<th style="text-align: left;">license_issue_date</th>
+<th style="text-align: left;">species</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">January 09 2018</td>
+<td style="text-align: left;">Cat</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">May 08 2018</td>
+<td style="text-align: left;">Cat</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">October 09 2018</td>
+<td style="text-align: left;">Dog</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</figure>
+</div>
+</div>
+<p>The first column, license_issue_date, describes the date the pet was adopted. The second column, species, contains the species of the pet, which is either “Cat” or “Dog”. <a href="#tbl-sample-data-b" class="quarto-xref">Table&nbsp;4</a> shows a random sample of the data while overall the earliest date in this column is January 28, 2014 and the latest date is December 30, 2018. There are 1,710 cats and 3,538 dogs in the dataset.</p>
+<p>Because there are no continuous variables in these data we have no means, standard deviations, medians (or related measures of central tendency or spread) to present.</p>
+</section>
+<section id="visualization" class="level2">
+<h2 class="anchored" data-anchor-id="visualization">Visualization</h2>
+<p>In <a href="#fig-adoptions-by-month" class="quarto-xref">Figure&nbsp;1</a> we show the number of cats and dogs adopted each month also as shown in <a href="#tbl-adoptions-by-month" class="quarto-xref">Table&nbsp;3</a>. Months run from January through December along the horizontal axis, and adoption counts appear on the vertical axis, with cats plotted as circles on a dashed line and dogs as squares on a dotted line. For example, dog adoptions jumped from roughly 210 in March to about 330 in April, while cat adoptions rose from their yearly low of about 80 to around 145 over the same month. Dogs were adopted more often than cats in every month, often by a margin of 100 or more, and both species ended the year at their highest levels, with about 365 dog and 175 cat adoptions in December. These patterns may reflect seasonal factors such as spring adoption events or holiday-season adoptions.</p>
+<div id="cell-fig-adoptions-by-month" class="cell" data-execution_count="7">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Instantiate the fig and ax objects with a figsize of 7in wide by 3in tall</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fig, ax <span class="op">=</span> plt.subplots(nrows<span class="op">=</span><span class="dv">1</span>, ncols<span class="op">=</span><span class="dv">1</span>, figsize<span class="op">=</span>(<span class="dv">7</span>, <span class="dv">3</span>))</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the lineplot with Seaborn</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>sns.lineplot(data<span class="op">=</span>adoption_counts, palette<span class="op">=</span>[<span class="st">'black'</span>, <span class="st">'black'</span>],</span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>             markers<span class="op">=</span>[<span class="st">'o'</span>, <span class="st">'s'</span>], dashes<span class="op">=</span>[(<span class="dv">4</span>, <span class="dv">2</span>), (<span class="dv">1</span>, <span class="dv">2</span>)], markersize<span class="op">=</span><span class="dv">8</span>, ax<span class="op">=</span>ax)</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Customize the plot</span></span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>ax.set_xlabel(<span class="st">''</span>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a y-axis label</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>ax.set_ylabel(<span class="st">'Number of Adoptions'</span>)</span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Set a title</span></span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a>ax.set_title(<span class="st">'Pet Adoptions by Month and Species'</span>)</span>
+<span id="cb7-14"><a href="#cb7-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-15"><a href="#cb7-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Move legend to lower right, entries side by side, without a title</span></span>
+<span id="cb7-16"><a href="#cb7-16" aria-hidden="true" tabindex="-1"></a>sns.move_legend(ax, <span class="st">'lower right'</span>, ncol<span class="op">=</span><span class="dv">2</span>, title<span class="op">=</span><span class="va">None</span>)</span>
+<span id="cb7-17"><a href="#cb7-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-18"><a href="#cb7-18" aria-hidden="true" tabindex="-1"></a><span class="co"># Rotate the x-axis labels 45 degrees for better readability</span></span>
+<span id="cb7-19"><a href="#cb7-19" aria-hidden="true" tabindex="-1"></a>_ <span class="op">=</span> ax.set_xticklabels(adoption_counts.index, rotation<span class="op">=</span><span class="dv">45</span>, ha<span class="op">=</span><span class="st">'right'</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>/var/folders/jj/4qs20y6s0yx9y1p0037cpb280000gn/T/ipykernel_82485/3394921040.py:19: UserWarning:
+
+set_ticklabels() should only be used with a fixed number of ticks, i.e. after set_ticks() or using a FixedLocator.
+</code></pre>
+</div>
+<div class="cell-output cell-output-display">
+<div id="fig-adoptions-by-month" class="quarto-float quarto-figure quarto-figure-center anchored">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-adoptions-by-month-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="index_files/figure-html/fig-adoptions-by-month-output-2.png" width="593" height="314" class="figure-img">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-adoptions-by-month-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Adoptions by month and species.
+</figcaption>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="analysis-results" class="level1">
+<h1>Analysis + Results</h1>
+<p>Our research question asks whether pet owners show a seasonal preference for cats or dogs when licensing their pets. Put simply, we ask if the choice of pet (either cat or dog) is a function of month. The null hypothesis is that there is no seasonal preference, meaning that the choice of pet does not depend on the month. The alternate hypothesis is that there is a seasonal preference, meaning that the choice of pet does depend on the month.</p>
+<p>We use month as a proxy for season. Weather, daylight, holidays, school calendar, and other similar factors may all plausibly shape when people bring home a new pet. These data only record the date a license was issued. Grouping those dates by calendar month gives us a simple, ordered measure of time of year that is easy to tally and compare. The proxy is imperfect. Month is a coarser and more arbitrary division than the seasons it stands in for.</p>
+<p><a href="#eq-null" class="quarto-xref">Equation&nbsp;1</a> states the null hypothesis, that species and month are unrelated (that choice of species is not a function of month), and <a href="#eq-alt" class="quarto-xref">Equation&nbsp;2</a> states the alternate hypothesis, that species and month are related (that choice of species is a function of month).</p>
+<p><span id="eq-null"><span class="math display">\[
+H_0: \text{Species Choice} \neq f(\text{Month})
+\tag{1}\]</span></span></p>
+<p><span id="eq-alt"><span class="math display">\[
+H_1: \text{Species Choice} = f(\text{Month})
+\tag{2}\]</span></span></p>
+<p>Two categorical variables, species (cat or dog) and month (January through December), call for a chi-square test of independence. <a href="#tbl-adoptions-by-month" class="quarto-xref">Table&nbsp;3</a> already counts how many cats and dogs were licensed in each month. The test compares those observed counts to the counts we would expect if species had nothing to do with month. A large gap between observed and expected counts is evidence against the null hypothesis in <a href="#eq-null" class="quarto-xref">Equation&nbsp;1</a>, and a small gap means we cannot reject it. The chi2 test statistic measures the size of the gap between observed and expected counts in a standardized way.</p>
+<p>The p-value then tells us the probability of observing a gap this large (or larger) if the null hypothesis were true. A small p-value (typically less than 0.05) indicates that the observed data are unlikely under the null hypothesis, leading us to reject the null hypothesis in favor of the alternative.</p>
+<p>To build output that updates automatically when the data change, we use Python code to perform the chi-square test and format the results into a natural language summary. The code first tests if <code>p_value</code> is greater than or equal to 0.05, and if so, it sets <code>nhst_result</code> to a string that states the p-value is greater than the conventional significance level of 0.05 and that we have no evidence to reject the null hypothesis. If the p-value is less than 0.05, it sets <code>nhst_result</code> to a string that states the p-value is less than the conventional significance level of 0.05 and that we have evidence to reject the null hypothesis. The manuscript then uses inline code that then renders that result.</p>
+<div id="96604f6c" class="cell" data-execution_count="8">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Perform chi-square test of independence</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>chi2, dof, p_value, expected <span class="op">=</span> chi2_contingency(adoption_counts)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&gt;=</span> <span class="fl">0.05</span>:</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>    nhst_result <span class="op">=</span> <span class="st">"""This p-value is greater than the conventional </span></span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a><span class="st">    significance level of 0.05, meaning that given these data and </span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="st">    these tests we have no evidence to reject the null hypothesis. </span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="st">    This means that we conclude there is no evidence of an </span></span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="st">    association between choice of pet species and month.</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>.replace(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">" "</span>)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>    nhst_result <span class="op">=</span> <span class="st">"""This p-value is less than the conventional </span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="st">    significance level of 0.05, meaning that given these data and </span></span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="st">    these tests we have evidence to reject the null hypothesis. We </span></span>
+<span id="cb9-15"><a href="#cb9-15" aria-hidden="true" tabindex="-1"></a><span class="st">    conclude that there is evidence in favor of believing that choice </span></span>
+<span id="cb9-16"><a href="#cb9-16" aria-hidden="true" tabindex="-1"></a><span class="st">    of pet species may be a function of month or season.</span></span>
+<span id="cb9-17"><a href="#cb9-17" aria-hidden="true" tabindex="-1"></a><span class="st">    """</span>.replace(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">" "</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The chi-square test of independence yields a test statistic of 20.3883 with 0.04029151432743355 degrees of freedom and a p-value of 11.0. This p-value is greater than the conventional significance level of 0.05, meaning that given these data and these tests we have no evidence to reject the null hypothesis. This means that we conclude there is no evidence of an association between choice of pet species and month.</p>
+</section>
+<section id="discussion" class="level1">
+<h1>Discussion</h1>
+<p>To further develop the discussion and narrative first extract the key values we want to highlight. We also use another conditional to populate <code>finding</code>, <code>spread_note</code>, and <code>implication</code> variables with text that is conditional on the test result and that will be used to write the discussion.</p>
+<div id="c9637f8b" class="cell" data-execution_count="9">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Pull values used in the discussion text from the analysis above</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate totals</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>totals <span class="op">=</span> adoption_counts[<span class="st">'Cat'</span>] <span class="op">+</span> adoption_counts[<span class="st">'Dog'</span>]</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate cat percentage</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>cat_share <span class="op">=</span> <span class="dv">100</span> <span class="op">*</span> adoption_counts[<span class="st">'Cat'</span>] <span class="op">/</span> totals</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Find busiest and quietest months</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>busiest, quietest <span class="op">=</span> totals.idxmax(), totals.idxmin()</span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>busiest_n, quietest_n <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>totals<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:,}</span><span class="ss">"</span>, <span class="ss">f"</span><span class="sc">{</span>totals<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:,}</span><span class="ss">"</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Find months with highest and lowest cat percentages</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>share_hi_month, share_lo_month <span class="op">=</span> cat_share.idxmax(), cat_share.idxmin()</span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>share_hi, share_lo <span class="op">=</span> <span class="ss">f"</span><span class="sc">{</span>cat_share<span class="sc">.</span><span class="bu">min</span>()<span class="sc">:.0f}</span><span class="ss">"</span>, <span class="ss">f"</span><span class="sc">{</span>cat_share<span class="sc">.</span><span class="bu">max</span>()<span class="sc">:.0f}</span><span class="ss">"</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Wording that depends on the outcome of the test</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> p_value <span class="op">&gt;=</span> <span class="fl">0.05</span>:</span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    finding <span class="op">=</span> <span class="st">"""In other words, we did not find evidence that the mix of </span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="st">    cats and dogs changes from month to month."""</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    spread_note <span class="op">=</span> <span class="st">"""That spread is within what chance variation could </span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="st">    plausibly produce in a sample of this size."""</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    implication <span class="op">=</span> <span class="st">"""for registries, shelters, and veterinarians, this means </span></span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a><span class="st">    our data do not support planning around species-specific seasons. </span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a><span class="st">    The swing in overall volume is a more concrete planning target, </span></span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a><span class="st">    and, as the introduction anticipated, a null result is still a useful </span></span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a><span class="st">    answer: the calendar alone does not tell us whether to expect more </span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a><span class="st">    cats or more dogs."""</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a><span class="cf">else</span>:</span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>    finding <span class="op">=</span> <span class="st">"""In other words, we found evidence that the mix of cats </span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a><span class="st">    and dogs changes from month to month, which supports the idea that </span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a><span class="st">    cats and dogs have their seasons."""</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    spread_note <span class="op">=</span> <span class="st">"""A spread this wide is unlikely to be explained by </span></span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a><span class="st">    chance alone."""</span></span>
+<span id="cb10-32"><a href="#cb10-32" aria-hidden="true" tabindex="-1"></a>    implication <span class="op">=</span> <span class="st">"""for registries, shelters, and veterinarians, this </span></span>
+<span id="cb10-33"><a href="#cb10-33" aria-hidden="true" tabindex="-1"></a><span class="st">    suggests that planning around species-specific seasons may pay off, </span></span>
+<span id="cb10-34"><a href="#cb10-34" aria-hidden="true" tabindex="-1"></a><span class="st">    for example by timing adoption events, staffing, and supplies to the </span></span>
+<span id="cb10-35"><a href="#cb10-35" aria-hidden="true" tabindex="-1"></a><span class="st">    months when one species is in higher demand."""</span></span>
+<span id="cb10-36"><a href="#cb10-36" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-37"><a href="#cb10-37" aria-hidden="true" tabindex="-1"></a>finding, spread_note, implication <span class="op">=</span> [</span>
+<span id="cb10-38"><a href="#cb10-38" aria-hidden="true" tabindex="-1"></a>    s.replace(<span class="st">"</span><span class="ch">\n</span><span class="st">"</span>, <span class="st">" "</span>) <span class="cf">for</span> s <span class="kw">in</span> (finding, spread_note, implication)]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>We set out to learn whether the choice between a cat and a dog is influenced by the time of year, using calendar month as a proxy for season. Our chi-square test of independence produced a test statistic of 20.3883 with 0.04029151432743355 degrees of freedom and a p-value of 11.0000. In other words, we did not find evidence that the mix of cats and dogs changes from month to month.</p>
+<p><a href="#fig-adoptions-by-month" class="quarto-xref">Figure&nbsp;1</a> and <a href="#tbl-adoptions-by-month" class="quarto-xref">Table&nbsp;3</a> show why it is important to separate two ideas. Cat and dog licenses rise and fall together over the year. In our sample, 10 Oct is the busiest month with 557 licenses, and 02 Feb is the quietest with 341. That shared swing in overall volume is not what the chi-square test examines. The test asks whether the cat share of each month’s licenses shifts, and in our sample that share ranges from 37% in 02 Feb to 29% in 10 Oct.&nbsp;That spread is within what chance variation could plausibly produce in a sample of this size.</p>
+<p>Returning to the questions raised in the introduction, for registries, shelters, and veterinarians, this means our data do not support planning around species-specific seasons. The swing in overall volume is a more concrete planning target, and, as the introduction anticipated, a null result is still a useful answer: the calendar alone does not tell us whether to expect more cats or more dogs.</p>
+<p>Several limitations apply. The data are pet licenses rather than adoptions (<a href="#tbl-data-dictionary" class="quarto-xref">Table&nbsp;2</a>), so a license date may reflect renewals, deadlines, or delayed paperwork rather than the moment a pet joined a household. Month is also a coarse stand-in for season. Our analysis uses a random sample of 5,248 licenses, and a smaller sample has less power to detect a small association, so failing to reject the null hypothesis is not proof that no association exists.</p>
+<p>The chi-square test also tells us whether species and month are related, but not how strongly or in which months. Future work could use the full dataset, report an effect size such as Cramér’s V, examine which months drive any difference, and compare more than one city or year. Because this paper is meant to serve as a template, the next scientist who swaps in their own data is the “we” who can take these steps.</p>
+</section>
+<section id="references" class="level1">
+
+
+
+
+</section>
+
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
+<div id="ref-seattle2026petlicenses" class="csl-entry" role="listitem">
+City of Seattle. 2026. <span>“Seattle Pet Licenses.”</span> <a href="https://data.seattle.gov/City-Administration/Seattle-Pet-Licenses/jguv-t9rb/about_data" class="uri">https://data.seattle.gov/City-Administration/Seattle-Pet-Licenses/jguv-t9rb/about_data</a>.
+</div>
+<div id="ref-tidytuesday2019seattlepets" class="csl-entry" role="listitem">
+R4DS Online Learning Community. 2019. <span>“TidyTuesday: Seattle Pets.”</span> <a href="https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-03-26" class="uri">https://github.com/rfordatascience/tidytuesday/tree/main/data/2019/2019-03-26</a>.
+</div>
+<div id="ref-seattle2026opendata" class="csl-entry" role="listitem">
+Seattle Information Technology. 2026. <span>“Open Data.”</span> <a href="https://www.seattle.gov/tech/reports-and-data/open-data" class="uri">https://www.seattle.gov/tech/reports-and-data/open-data</a>.
+</div>
+</div></section><section id="footnotes" class="footnotes footnotes-end-of-document" role="doc-endnotes"><h2 class="anchored quarto-appendix-heading">Footnotes</h2>
+
+<ol>
+<li id="fn1"><p>This paper uses “we” and “our” rather than “I” and “my” for two reasons. First, the paper is meant to serve as a template. Future scientists who adopt it to write their own papers are, in a sense, the “we”: the people who load the data, run the analysis, and make the choices described in the text. Writing in the first-person plural lets the template’s wording carry over to those authors without rewriting. Second, personal pronouns, whether singular or collective, let us name who performed each action and so avoid the passive voice (for example, “we set the context” rather than “the context was set”). The APA Style manual expressly endorses this practice. It directs authors to use first-person pronouns to describe their own work, “I” for a single author and “we” for multiple authors, and to avoid referring to oneself in the third person (e.g., “the authors”), which can leave readers unsure who performed an action. It also advises using the active voice rather than the passive voice as much as possible. This first person approach also avoids anthropomorphizing the data or analysis.<a href="#fnref1" class="footnote-back" role="doc-backlink">↩︎</a></p></li>
+</ol>
+</section></div></main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp("https:\/\/adamrossnelson\.github\.io\/cat-and-dog\/");
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
